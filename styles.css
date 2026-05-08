@@ -448,6 +448,17 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
 .site-footer a { color: rgba(251, 246, 238, 0.85); }
 .site-footer a:hover { color: var(--cream); }
 .footer-bottom { display: flex; justify-content: space-between; padding-top: 1.5rem; gap: 1rem; flex-wrap: wrap; color: rgba(251, 246, 238, 0.6); }
+.footer-disclaimer {
+  margin-top: 0.75rem;
+  padding: 0.85rem 1rem;
+  background: rgba(251, 246, 238, 0.06);
+  border: 1px solid rgba(251, 246, 238, 0.12);
+  border-radius: 10px;
+  color: rgba(251, 246, 238, 0.7);
+  font-style: italic;
+  text-align: center;
+  line-height: 1.5;
+}
 
 /* Responsive */
 @media (max-width: 960px) {
