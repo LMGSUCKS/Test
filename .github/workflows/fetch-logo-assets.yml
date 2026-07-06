@@ -1,0 +1,30 @@
+name: Fetch generated logo assets
+on:
+  push:
+    branches:
+      - claude/salisbury-vet-clinic-logo-6sd81c
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/salisbury-vet-clinic-logo-6sd81c
+      - name: Download generated logo images
+        run: |
+          mkdir -p assets
+          curl -fsSL -o assets/features_candidate_a.png "https://d8j0ntlcm91z4.cloudfront.net/user_3DJex4AabX8CYKots03e5DPjGfy/hf_20260706_222843_60f2b57a-6ed1-4f05-a05a-9add300e7bde.png"
+          curl -fsSL -o assets/features_candidate_b.png "https://d8j0ntlcm91z4.cloudfront.net/user_3DJex4AabX8CYKots03e5DPjGfy/hf_20260706_222845_8183b10d-7726-45aa-97f2-dcbfed9b4990.png"
+      - name: Commit assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/
+          git diff --cached --quiet || {
+            git commit -m "Add silhouette-with-features logo candidate images"
+            git push origin claude/salisbury-vet-clinic-logo-6sd81c
+          }
